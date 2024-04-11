@@ -1,0 +1,20 @@
+Counting,Abacus,An ancient calculating tool used worldwide for basic arithmetic operations.,1,2,1,1,1
+Counting,Antikythera Mechanism,Ancient Greek analog computer used to predict astronomical positions and eclipses.,2,3,1,2,1
+Counting,Quipu,Ancient Incan device for recording information, consisting of variously colored threads knotted in different ways.,1,2,1,1,2
+Counting,Astronomical Clock,Medieval European clock that was one of the earliest complex machines, integrating astronomical observations.,2,3,2,3,2
+Counting,Water Clock,Ancient time-measuring instrument used by several civilizations; operated by the flow of water.,1,2,1,2,1
+Calculating,Pascaline,Early mechanical calculator invented by Blaise Pascal that could perform addition and subtraction.,2,4,2,4,3
+Calculating,Stepped Reckoner,Gottfried Wilhelm Leibniz's mechanical calculator that could perform various arithmetic operations.,3,4,2,5,3
+Calculating,Jacquard Loom,An early machine that used punch cards to control a loom's weaving pattern, precursor to computer programming.,3,5,3,5,4
+Calculating,Difference Engine,An automatic mechanical calculator designed to tabulate polynomial functions, designed by Charles Babbage.,4,5,2,6,4
+Calculating,Analytical Engine,Proposed by Charles Babbage, considered the first general mechanical computer.,5,6,3,7,5
+Information,ENIAC,Early electronic general-purpose computer.,4,7,4,8,6,None
+Information,UNIVAC I,First commercially available computer in the US.,5,8,5,9,7,None
+Information,IBM System/360,Mainframe computer systems using integrated circuits.,5,8,4,10,8,None
+Information,Apple I,One of the first personal computers.,4,7,5,9,6,None
+Information,ARPANET,Precursor to the internet.,6,9,4,11,7,None
+Singularity,Brain-Computer Interface,Advanced technology for direct communication between a brain and an external device.,0,0,0,20,15,ENIAC
+Singularity,Nanofactory,A proposed machine that can manufacture products with atomic precision, revolutionizing production.,0,0,0,18,12,UNIVAC I
+Singularity,Quantum Computer,A hypothetical computing system that uses quantum bits, vastly increasing processing power.,0,0,0,22,10,IBM System/360
+Singularity,Artificial General Intelligence,A hypothetical machine with the ability to understand or learn any intellectual task.,0,0,0,25,20,Apple I
+Singularity,Global Cloud Network,Next-generation cloud computing infrastructure offering unparalleled data storage and processing capabilities worldwide.,0,0,0,24,18,ARPANET
