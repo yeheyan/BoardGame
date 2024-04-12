@@ -1,3 +1,7 @@
+/**
+ * Level.java
+ * Enum class for the level of the machine
+ */
 public enum Level{
     //counting/calculating/information/singularity
     Counting{

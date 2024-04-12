@@ -39,6 +39,6 @@ public interface IModel {
 	/**
 	 * This method is used to add a specific card from revealed cards to the player's hand
 	 */
-	void selectCard(ICard card);
+	void selectCard(Card card);
 
 }

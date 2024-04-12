@@ -5,7 +5,7 @@
  * and any special effects.
  * TODO: Have an abstract class for cards and extend it to have different types of cards
  */
-public class Card implements ICard{    // use interface ICard so that we can easily switch to a different card implementation
+public abstract class Card implements ICard{    // use interface ICard so that we can easily switch to a different card implementation
     private static int idCounter = 0; // Counter for card IDs
     private final int id; // Unique identifier for the card
     private String name; // Name of the scientist, machine, or figure
@@ -16,23 +16,24 @@ public class Card implements ICard{    // use interface ICard so that we can eas
     private boolean isPlayed; // Indicates if the card is currently in play(currently not used, probably for future expansion)
 
     // Constructor
-    public Card(int id, String name, String description, int vp, int sciencePoints, int economyPoints) {
+    public Card(String name, String description, int vp, int sciencePoints, int economyPoints) {
         this.id = ++idCounter;
-        this.name = name;
-        this.description = description;
-        this.vp = vp;
-        this.sciencePoints = sciencePoints;
-        this.economyPoints = economyPoints;
+        setName(name);
+        setDescription(description);
+        setVp(vp);
+        setSciencePoints(sciencePoints);
+        setEconomyPoints(economyPoints);
         this.isPlayed = false; // Initially, cards are not in play
     }
     
     public Card(){
         this.id = ++idCounter;
         this.isPlayed = false;
-        this.vp = 0;
-        this.sciencePoints = 0;
-        this.economyPoints = 0;
+        setVp(0);
+        setSciencePoints(0);
+        setEconomyPoints(0);
     }
+
     // Getters and setters
     public int getCardID(){
         return id;
@@ -58,6 +59,21 @@ public class Card implements ICard{    // use interface ICard so that we can eas
     public void setPlayed(boolean played) {
         isPlayed = played;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public void setVp(int vp) {
+        this.vp = vp;
+    }
+    public void setSciencePoints(int sciencePoints) {
+        this.sciencePoints = sciencePoints;
+    }
+    public void setEconomyPoints(int economyPoints) {
+        this.economyPoints = economyPoints;
+    }
 
     @Override
     public String toString() {
@@ -80,21 +96,4 @@ public class Card implements ICard{    // use interface ICard so that we can eas
         "EP: <b>" + economyPoints + "</b><br>" +
         "</html>";
     }
-    
-    public static Card parseCard(String line) {
-        Card card = new Card();
-        card.loadCard(line);
-        return card;
-    }
-
-    @Override
-    public void loadCard(String lines) {
-    	String[] cardInfo = lines.split(",(?! )");
-        this.name = cardInfo[1];
-        this.description = cardInfo[2];
-        this.vp = Integer.parseInt(cardInfo[3]);
-        this.sciencePoints = Integer.parseInt(cardInfo[4]);
-        this.economyPoints = Integer.parseInt(cardInfo[5]);
-    }
-
 }

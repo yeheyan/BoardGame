@@ -10,14 +10,6 @@ public class MachineList{
         this.machineList = machineList;
     }
 
-    public void addMachine(Machine machine){
-        machineList.add(machine);
-    }
-
-    public void removeMachine(Machine machine){
-        machineList.remove(machine);
-    }
-
     //getter
     public Machine getMachine(int index){
         return machineList.get(index);

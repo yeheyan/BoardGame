@@ -9,13 +9,13 @@ public interface IDeck {
      * Add a card to the deck
      * @param card
      */
-    void addCard(ICard card);
+    void addCard(Card card);
 
     /**
      * Remove a card from the deck
      * @param card
      */
-    void removeCard(ICard card);
+    void removeCard(Card card);
     /**
      * Shuffle the deck
      */
@@ -31,17 +31,17 @@ public interface IDeck {
      * Get the top card of the deck
      * @return
      */
-    ICard getTopCard();
+    Card getTopCard();
     /**
      * Draw a card from the deck
      * @return the card drawn
      */
-    ICard drawCard();
+    Card drawCard();
 
     /**
      * Set the deck
      * @param cards
      */
-	void setDeck(ListImp<ICard> cards);
+	void setDeck(ListImp<Card> cards);
 	
 }

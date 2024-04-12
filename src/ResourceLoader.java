@@ -2,8 +2,18 @@ import listadt.ListImp;
 
 import java.io.InputStream;
 import java.util.Scanner;
-
+/**
+ * ResourceLoader class
+ * Load resources from a file
+ * @param <T> type of the resource
+ */
 public class ResourceLoader<T> {
+    /**
+     * Load resources from a file
+     * @param resourcePath path to the resource file
+     * @param parser parser to parse each line of the resource file
+     * @return a list of resources
+     */
     public ListImp<T> load(String resourcePath, ResourceParser<T> parser) {
         ListImp<T> resources = new ListImp<>();
         InputStream is = getClass().getResourceAsStream(resourcePath);
@@ -16,6 +26,9 @@ public class ResourceLoader<T> {
                 T resource = parser.parse(line);
                 resources.add(resource);
             }
+        }
+        catch (Exception e) {
+            throw new RuntimeException("Error reading resource: " + resourcePath, e);
         }
         return resources;
     }

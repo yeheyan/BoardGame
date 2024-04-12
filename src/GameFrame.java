@@ -4,9 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.Serial;
 
 public class GameFrame extends JFrame implements IGUI{
-    private static final long serialVersionUID = 1L;
+    @Serial
+    private static final long serialVersionUID = 1L; // Default serial version ID
     private JPanel mainMenuPanel;
     private JPanel gamePanel;
     private JPanel gameOverPanel;
@@ -84,6 +86,11 @@ public class GameFrame extends JFrame implements IGUI{
         setState(GameState.MAIN_MENU);
     }
 
+    /**
+     * Initialize the UI components
+     * This method is called by the constructor to set up the UI components
+     * and add them to the content pane of the frame
+     */
     private void initializeUI() {
         mainMenuPanel = createMainMenuPanel();
         gamePanel = createGamePanel();
@@ -294,7 +301,7 @@ public class GameFrame extends JFrame implements IGUI{
         	@Override
         	public void mouseClicked(MouseEvent e) {
         		if (selectCard&&selectCardBtnTime>0) {
-        		c.playerSelectCard(card_1);
+        		c.playerSelectCard((Card) card_1);
         		c.updateCard_1_Info();
         		lblCardinfo.setText(card_1.toString());
         		updatePlayerInfo(c.getCurrentPlayer());
@@ -318,7 +325,7 @@ public class GameFrame extends JFrame implements IGUI{
         	public void mouseClicked(MouseEvent e) {
         		// only when select card button is clicked, the card can be selected
         		if (selectCard && selectCardBtnTime>0) {
-        		c.playerSelectCard(card_2); //put the card in hand back to the deck, and select a card displayed on the board
+        		c.playerSelectCard((Card) card_2); //put the card in hand back to the deck, and select a card displayed on the board
         		c.updateCard_2_Info(); //draw a new card from the deck, and update the card info
         		lblCardinfo_1.setText(card_2.toString());
         		//System.out.println(c.getCurrentPlayer().getVp());   //testing
@@ -408,8 +415,12 @@ public class GameFrame extends JFrame implements IGUI{
 
         return backgroundPanel;
     }
-    
-    // switch between panels
+
+    /**
+     * Set the state of the game
+     * This method is called by the controller to switch between different panels
+     * @param newState
+     */
     public void setState(GameState newState) {
         getContentPane().removeAll(); // Remove current panel
         switch (newState) {
@@ -447,9 +458,12 @@ public class GameFrame extends JFrame implements IGUI{
 			AIInfo.setText(player.toString());
 		}
 	}
-	
+
+    /**
+     * Update the color of the player info panel based on the current player
+     */
 	public void updateColor() {
-		Player viewCurPlayer = (Player) c.getCurrentPlayer();
+		Player viewCurPlayer = c.getCurrentPlayer();
 		if (viewCurPlayer == c.getPlayer()) {
 			PlayerInfo.setBackground(Color.BLACK);
 			AIInfo.setBackground(Color.BLUE);
@@ -480,7 +494,20 @@ public class GameFrame extends JFrame implements IGUI{
 			button.setEnabled(false);
 		}
 	}
-	
+
+    /**
+     * Initialize a button for a machine
+     * @param text
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * @param level
+     * @param machineIndex
+     * @param buttonArray
+     * @param nextLevelButtons
+     * @return the initialized button
+     */
 	private JButton initializeLevelButton(String text, int x, int y, int width, int height, Level level, int machineIndex, JButton[] buttonArray, JButton[] nextLevelButtons) {
 	    JButton button = buttonArray[machineIndex];
 	    button.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
@@ -500,7 +527,7 @@ public class GameFrame extends JFrame implements IGUI{
 	    panel.add(button);
 	    return button;
 	}
-	
+
 	public void displayGameOver(Player winner) {
 	    String message = "<html>Game Over - Winner: <b>" + winner.getName() + "</b> wins!<br>Press to Exit Game</html>";
 	    gameOverButton.setText(message);
@@ -514,6 +541,9 @@ public class GameFrame extends JFrame implements IGUI{
         rulesPanel.setVisible(isRulesVisible); // Apply the new visibility state to the label
     }
 
+    /**
+     * Update the buttons for each machine level
+     */
     public void updateMachineButtons() {
         c.updateMachineButtonsUI(Level.Counting, countingButtons);
         c.updateMachineButtonsUI(Level.Calculating, calculatingButtons);

@@ -19,6 +19,7 @@ public abstract class Player implements IPlayer{
         this.vp = 0;
         this.hand = new Deck();
     }
+
     public Player() {
         this.name = "The Mighty Brain";
         this.sciencePoints = 0;
@@ -27,21 +28,21 @@ public abstract class Player implements IPlayer{
         this.hand = new Deck();
     }
 
-    //use this if draw from deck
+    @Override
     public void drawCard(IDeck deck) {
-        ICard card = deck.getTopCard();
+        Card card = deck.getTopCard();
         hand.addCard(card);
         deck.removeCard(card);
     }
     
-    // use this select from revealed cards
-	public void getCard(ICard card) {
+    @Override
+	public void getCard(Card card) {
 		hand.addCard(card);
 		this.setVp(this.getVp() + card.getVp());
 	}
 
-    // player put hand card back to the whole deck
-    public void putCardBack(IDeck deck, ICard card) {
+    @Override
+    public void putCardBack(IDeck deck, Card card) {
         hand.removeCard(card);
         deck.addCard(card);
         this.setVp(this.getVp() - card.getVp());
@@ -77,7 +78,6 @@ public abstract class Player implements IPlayer{
     public void setEconomyPoints(int economyPoints) {
         this.economyPoints = economyPoints;
     }
-
 
     // Override toString method for player information
     @Override

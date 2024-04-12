@@ -66,9 +66,9 @@ public class Controller implements IController{
 	    }
 	}
 
-	public void playerSelectCard(ICard card) {
+	public void playerSelectCard(Card card) {
 		//if player hand is null getCard
-		if (Objects.equals(model.getTurn().getHand().getTopCard(), new Card())) {
+		if (Objects.equals(model.getTurn().getHand().getTopCard(), new ResourceCard())) {
 			model.getTurn().getCard(card);
 		}
 		model.selectCard(card);// select & put back
@@ -80,12 +80,12 @@ public class Controller implements IController{
 	
 	//turn begins
 	public void updateCard_1_Info() {
-		ICard card = model.getDeck().drawCard();
+		Card card = model.getDeck().drawCard();
 		view.updateCard_1(card);
 	}
 	
 	public void updateCard_2_Info() {
-		ICard card =  model.getDeck().drawCard();
+		Card card =  model.getDeck().drawCard();
 		view.updateCard_2(card);
 	}
 	
