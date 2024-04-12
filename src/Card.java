@@ -3,7 +3,7 @@
  * including scientists, institutions, and notable figures,
  * with attributes for science points, economy points, victory points,
  * and any special effects.
- * Abstact class with subclasses for each card type?
+ * TODO: Have an abstract class for cards and extend it to have different types of cards
  */
 public class Card implements ICard{    // use interface ICard so that we can easily switch to a different card implementation
     private static int idCounter = 0; // Counter for card IDs

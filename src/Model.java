@@ -12,15 +12,16 @@ public class Model implements IModel {
     private IDeck deck;  // total cards not being drawn
     private Player currentPlayer;
     private MachineList allMachines; // all machines
-    private Player comparePlayer = new HumanPlayer("No one");
+    private Player comparePlayer = new HumanPlayer("No one"); //we could make another dummy player class for this just to represent no owner
 
-    //single player mode(or probably two players mode, AI not implemented)
+    //single player mode(or probably two players mode, since AI not implemented)
+    // use this constructor for now; we can change it later
     public Model(String playerName) {
         players = new ListImp<Player>();
         players.add(new HumanPlayer(playerName));
         players.add(new AIPlayer());
         deck = new Deck();
-        currentPlayer = players.get(0); // human player goes first
+        currentPlayer = players.get(0); // first in the list goes first
         allMachines = new MachineList();
     }
     
@@ -41,21 +42,16 @@ public class Model implements IModel {
     	ListImp<Machine> machines = machineLoader.load(Constant.MACHINE_DATA_FILE, Machine::parseMachine);
     	this.deck.setDeck(cards);
     	this.allMachines.setMachines(machines);
-        this.shuffleDeck();
+        deck.shuffle();
     }
     
     //player actions
     @Override
     public void selectCard(ICard card) {
     	//put the card in hand back to the deck
-    	 currentPlayer.putCardBack(deck, currentPlayer.getHand().getTopCard());
+        currentPlayer.putCardBack(deck, currentPlayer.getHand().getTopCard());
         //select a card displayed on the board
         currentPlayer.getCard(card);
-    }
-
-
-    public void shuffleDeck() {
-        deck.shuffle();
     }
 
     @Override
@@ -74,12 +70,13 @@ public class Model implements IModel {
             return currentPlayer;
         }
         //own singularity machine
-		for (int i = 0; i < allMachines.size(); i++) {
-			if (allMachines.getMachine(i).getLevel() == Level.Singularity
-					&& allMachines.getMachine(i).getOwner() == currentPlayer) {
-				return currentPlayer;
-			}
-		}
+        //use count to check if the player has a singularity machine
+        int numOwnedSingularity = allMachines.getMachineList().filter(x ->
+                x.getLevel() == Level.Singularity && x.getOwner() == currentPlayer)
+                .count(x-> true);
+        if (numOwnedSingularity > 0) {
+            return currentPlayer;
+        }
         return comparePlayer;
     }
 

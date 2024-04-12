@@ -13,8 +13,8 @@ public class Machine {
     private int economyPoints;
     private int requiredSciencePoints;
     private int requiredEconomyPoints;
-    private IPlayer comparePlayer = new AIPlayer("No owner");
-    private IPlayer owner; // Owner of the machine, initially null;
+    private Player comparePlayer = new HumanPlayer("No owner");
+    private Player owner; // Owner of the machine, initially null;
                           // The owner of the machine add sciencePoints and economyPoints to the player each round
 
     public Machine(Level level, String machine, String description, int vp, int sciencePoints, int economyPoints, int requiredSciencePoints, int requiredEconomyPoints) {
@@ -58,13 +58,13 @@ public class Machine {
     public int getRequiredEconomyPoints() {
         return requiredEconomyPoints;
     }
-    public IPlayer getOwner() {
+    public Player getOwner() {
         return owner;
     }
     
     
     // when player click on machine, set owner to player with conditions, subtract science and economy points
-    public int setOwner(IPlayer owner) {
+    public int setOwner(Player owner) {
     	//check if owner player has enough science and economy points and no owner
     	if (owner.getSciencePoints() >= requiredSciencePoints && owner.getEconomyPoints() >= requiredEconomyPoints && this.owner==comparePlayer) {
         this.owner = owner;
