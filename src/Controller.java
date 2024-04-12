@@ -23,12 +23,11 @@ public class Controller implements IController{
          model.load();	         
     }
 
-
 	@Override
 	public void endTurn() {
 		view.updateColor();
 		model.nextTurn();
-		IPlayer prevPlayer = this.getCurrentPlayer();
+		Player prevPlayer = this.getCurrentPlayer();
 		model.switchPlayer();
 		view.updatePlayerInfo(prevPlayer);
 	}
@@ -62,7 +61,7 @@ public class Controller implements IController{
 	@Override
 	public void isGameOver() {
 	    if (model.isGameOver()) {
-	        IPlayer winner = model.getWinner();
+	        Player winner = model.getWinner();
 	        view.displayGameOver(winner);
 	    }
 	}
@@ -110,15 +109,15 @@ public class Controller implements IController{
 		return boolNextLevel;
 	}
 
-	public IPlayer getPlayer() {
+	public Player getPlayer() {
 		return model.getPlayer(0);
 	}
 
-	public IPlayer getAI() {
+	public Player getAI() {
 		return model.getPlayer(1);
 	}
 
-	public IPlayer getCurrentPlayer() {
+	public Player getCurrentPlayer() {
 		return model.getTurn();
 	}
 }

@@ -3,7 +3,7 @@ public interface IModel {
      * This method is used to get the current player's turn.
      * @return IPlayer
      */
-    IPlayer getTurn();
+    Player getTurn();
 
     /**
      * Check if the game is over.
@@ -14,7 +14,7 @@ public interface IModel {
      * Get the winner of the game.
      * @return IPlayer
      */
-    IPlayer getWinner();
+    Player getWinner();
 
     /**
      * This method is used to switch to the next player's turn.
@@ -32,13 +32,6 @@ public interface IModel {
 	void load();
 
 	/**
-	 * This method is used to get a player by index
-	 * @param i
-	 * @return IPlayer
-	 */
-	IPlayer getPlayer(int i);
-
-	/**
 	 * This method is used to switch the player's turn.
 	 */
 	void switchPlayer();
@@ -47,17 +40,5 @@ public interface IModel {
 	 * This method is used to add a specific card from revealed cards to the player's hand
 	 */
 	void selectCard(ICard card);
-	
-	/**
-	 * This method is used to get the deck in game
-	 * @return Object
-	 */
-	IDeck getDeck();
-	
-	/**
-	 * This method is used to get the list of machines in game
-	 * @return MachineList
-	 */
-	MachineList getMachineList();
 
 }

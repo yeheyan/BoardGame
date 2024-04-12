@@ -53,7 +53,6 @@ public class ListImp<T> {
         return new ListImp<T>(head.filter(predicate));
     }
 
-
     public void saveFile(String filename) throws IOException {
         try {
             File file = new File(filename);

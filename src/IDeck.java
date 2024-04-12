@@ -1,17 +1,47 @@
 import listadt.ListImp;
 
+/**
+ * Interface for a deck of cards
+ * A deck is a collection of cards
+ */
 public interface IDeck {
-    // add a card to the deck
+    /**
+     * Add a card to the deck
+     * @param card
+     */
     void addCard(ICard card);
-    // remove a card from the deck
+
+    /**
+     * Remove a card from the deck
+     * @param card
+     */
     void removeCard(ICard card);
-    // shuffle the deck
+    /**
+     * Shuffle the deck
+     */
     void shuffle();
-    // get the size of the deck
+
+    /**
+     * Get the size of the deck
+     * @return the size of the deck
+     */
     int size();
-    // get the card at the top of the deck
+
+    /**
+     * Get the top card of the deck
+     * @return
+     */
     ICard getTopCard();
+    /**
+     * Draw a card from the deck
+     * @return the card drawn
+     */
     ICard drawCard();
+
+    /**
+     * Set the deck
+     * @param cards
+     */
 	void setDeck(ListImp<ICard> cards);
 	
 }

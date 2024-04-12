@@ -65,10 +65,6 @@ public class Deck implements IDeck{
         this.removeCard(card);
         return card;
     }
-    
-    public Deck getDeck() {
-        return this;
-    }
 
     public String toString() {
         return deck.toString();

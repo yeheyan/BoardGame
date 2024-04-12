@@ -440,7 +440,7 @@ public class GameFrame extends JFrame implements IGUI{
 		this.card_2 = card;
 	}
 	
-	public void updatePlayerInfo(IPlayer player) {
+	public void updatePlayerInfo(Player player) {
 		if (player == c.getPlayer()) {
 			PlayerInfo.setText(player.toString());
 		} else {
@@ -501,7 +501,7 @@ public class GameFrame extends JFrame implements IGUI{
 	    return button;
 	}
 	
-	public void displayGameOver(IPlayer winner) {
+	public void displayGameOver(Player winner) {
 	    String message = "<html>Game Over - Winner: <b>" + winner.getName() + "</b> wins!<br>Press to Exit Game</html>";
 	    gameOverButton.setText(message);
 	    //set text color

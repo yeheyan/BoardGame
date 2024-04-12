@@ -12,5 +12,8 @@ public class AssetDriver {
         // filter the machine list to only include machines with more than 5 Science points
         ListImp<Machine> highScienceMachines = machineList.getMachineList().filter(x -> x.getSciencePoints() > 5);
         System.out.println("Machines with science points higher than 5: \n" + highScienceMachines.map(x -> x.getMachine()) + "\n");
+        //count the number of machines with more than 5 Science points
+        int count = machineList.getMachineList().count(x -> x.getSciencePoints() > 5);
+        System.out.println("Number of machines with science points higher than 5: " + count + "\n");
     }
 }

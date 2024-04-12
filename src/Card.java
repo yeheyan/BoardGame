@@ -88,8 +88,8 @@ public class Card implements ICard{    // use interface ICard so that we can eas
     }
 
     @Override
-    public void loadCard(String cardName) {
-    	String[] cardInfo = cardName.split(",(?! )");
+    public void loadCard(String lines) {
+    	String[] cardInfo = lines.split(",(?! )");
         this.name = cardInfo[1];
         this.description = cardInfo[2];
         this.vp = Integer.parseInt(cardInfo[3]);

@@ -39,7 +39,6 @@ public abstract class Player implements IPlayer{
 		hand.addCard(card);
 		this.setVp(this.getVp() + card.getVp());
 	}
-	
 
     // player put hand card back to the whole deck
     public void putCardBack(IDeck deck, ICard card) {

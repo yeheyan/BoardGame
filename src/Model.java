@@ -8,15 +8,15 @@ import static java.lang.System.exit;
  */
 
 public class Model implements IModel {
-    private ListImp<IPlayer> players; //two players
+    private ListImp<Player> players; //two players
     private IDeck deck;  // total cards not being drawn
-    private IPlayer currentPlayer;
+    private Player currentPlayer;
     private MachineList allMachines; // all machines
-    private IPlayer comparePlayer = new AIPlayer("No one");
+    private Player comparePlayer = new HumanPlayer("No one");
 
     //single player mode(or probably two players mode, AI not implemented)
     public Model(String playerName) {
-        players = new ListImp<IPlayer>();
+        players = new ListImp<Player>();
         players.add(new HumanPlayer(playerName));
         players.add(new AIPlayer());
         deck = new Deck();
@@ -25,7 +25,7 @@ public class Model implements IModel {
     }
     
     //Dependency injection version of the constructor
-    public Model(IDeck deck, MachineList allMachines, ListImp<IPlayer> players) {
+    public Model(IDeck deck, MachineList allMachines, ListImp<Player> players) {
         this.players = players;
         this.deck = deck;
         this.allMachines = allMachines;
@@ -59,7 +59,7 @@ public class Model implements IModel {
     }
 
     @Override
-    public IPlayer getTurn() {
+    public Player getTurn() {
         return currentPlayer;
     }
 
@@ -69,7 +69,7 @@ public class Model implements IModel {
     }
 
     @Override
-    public IPlayer getWinner() {
+    public Player getWinner() {
         if (currentPlayer.getVp() >= Constant.WINNING_POINTS) {
             return currentPlayer;
         }
@@ -107,19 +107,18 @@ public class Model implements IModel {
 		}
 	}
 
-    @Override
     public void endGame() {
         exit(0); //for now
     }
-    @Override
-    public IPlayer getPlayer(int i) {
+
+    public Player getPlayer(int i) {
         return players.get(i);
     }
-    @Override
+
 	public IDeck getDeck() {
         return deck;
     }
-	@Override
+
 	public MachineList getMachineList() {
 		return allMachines;
     }
