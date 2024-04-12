@@ -1,6 +1,5 @@
 import listadt.*;
 
-
 /*
  * manage the deck of cards
  */

@@ -15,7 +15,7 @@ class BackgroundPanel extends JPanel {
         try {
             backgroundImage = new ImageIcon(getClass().getResource(fileName)).getImage();
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace(); //prints the stack trace to the standard error stream
         }
     }
 
