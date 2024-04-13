@@ -1,7 +1,8 @@
 Project: Evo AI
+==============================================================================
 Author: Yehe Yan
 Date: 2024.4.10
-==============================================================================
+
 Introduction:
 Evo AI is a strategy game that has a pretty similar scheme as the board game, Splendor. 
 The game simulates the evolution of computing based machines. Players will try to evolve as fast as possible with limited resources to win the game. 
