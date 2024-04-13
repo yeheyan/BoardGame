@@ -20,6 +20,11 @@ Game Rules:
 - VP: Victory Points; SP: Science Points; EP: Economy Points
 - Click 'Rules' again to close.
 
+Instructions:
+Run in java;
+Or copy paste in terminal:
+java -jar EvoAI.jar
+
 Future Development:
 - AI for single player mode
 - More player options
